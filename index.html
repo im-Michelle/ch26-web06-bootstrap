@@ -112,18 +112,33 @@
     <div class="container mt-4">
        <div class="row justify-content-center"> 
         <div class="col-5 text-center"> 
-          <p id="name"> Mi nombre</p> 
+          <p class="text-color" id="name"> Mi nombre</p> 
         </div> 
       </div> 
       <!--Botones cambia el color-->
-      <div class="row">
-        <div class="col">
-          <button onclick="changeColorToRed()" type="button" class="btn btn-danger">Rojo</button> 
+      <div class="row row-cols-1 row-cols-md-3">
+        <div class="col text-center">
+          <button onclick="changeColorTo('red')" type="button" class="btn btn-danger">Rojo</button> 
         </div>
-        <div class="col"></div>
-        <div class="col"></div>
+        <div class="col text-center mt-2">
+          <button onclick="changeColorTo('blue')" type="button" class="btn btn-primary">Azul</button> 
+        </div>
+        <div class="col text-center mt-2">
+          <button onclick="changeColorTo('green')" type="button" class="btn btn-success">Verde</button> 
+        </div>
       </div>
     </div> 
+
+    <div class="container mt-4">
+      <div class="row row-cols-1 row-cols-md-3">
+        <div class="col text-center"><p class="text-color" onclick="changeColorParagraph(this, 'green')">Me cambiaré a verde</p></div>
+        <div class="col text-center"><p class="text-color" onclick="changeColorParagraph(this, 'blue')">Me cambiaré a azúl</p></div>
+        <div class="col text-center"><p class="text-color" onclick="changeColorParagraph(this, 'yellow')">Me cambiaré a amarillo</p></div>
+      </div>
+      <div class="row">
+        <div class="col-5"><button onclick="resetColors()" type="button" class="btn btn-dark">Reset</button></div>
+      </div>
+    </div>
 
     <div class="container mt-4 text-center">
       <div class="row row-cols-1 row-cols-md-3 g-4">
