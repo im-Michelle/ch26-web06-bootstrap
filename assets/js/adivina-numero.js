@@ -12,24 +12,22 @@ resetButton.style.visibility = "hidden";
 
 const actualizarNumero = (numero) => numeroElement.textContent = numero;
 
-const esMenor = () => {
-  max = estimado - 1;
-  estimado = Math.floor((max + min) / 2);
-  actualizarNumero(estimado);
-};
-
-const esIgual = () => {
-  actualizarNumero(`Tu número es el ${estimado}, excelente decisión`);
-  menorButton.disabled = true;
-  mayorButton.disabled = true;
-  resetButton.style.visibility = "visible";
-  juegoTerminado = true;
-};
-
-const esMayor = () => {
-  min = estimado + 1;
-  estimado = Math.floor((max + min) / 2);
-  actualizarNumero(estimado);
+const adivinarNumero = (numero) => {
+  if (numero === estimado) {
+    actualizarNumero(`Tu número es el ${estimado}, excelente decisión`);
+    menorButton.disabled = true;
+    mayorButton.disabled = true;
+    resetButton.style.visibility = "visible";
+    juegoTerminado = true;
+  } else if (numero < estimado) {
+    max = estimado - 1;
+    estimado = Math.floor((max + min) / 2);
+    actualizarNumero(estimado);
+  } else {
+    min = estimado + 1;
+    estimado = Math.floor((max + min) / 2);
+    actualizarNumero(estimado);
+  }
 };
 
 const reiniciarJuego = () => {
@@ -43,9 +41,9 @@ const reiniciarJuego = () => {
   juegoTerminado = false;
 };
 
-menorButton.addEventListener("click", esMenor);
-igualButton.addEventListener("click", esIgual);
-mayorButton.addEventListener("click", esMayor);
+menorButton.addEventListener("click", () => adivinarNumero(estimado - 1));
+igualButton.addEventListener("click", () => adivinarNumero(estimado));
+mayorButton.addEventListener("click", () => adivinarNumero(estimado + 1));
 resetButton.addEventListener("click", reiniciarJuego);
 
 actualizarNumero(estimado);
